@@ -1,0 +1,5 @@
+#dossiers ignores
+node_modules
+
+#fichiers ignores
+package-lock.json
