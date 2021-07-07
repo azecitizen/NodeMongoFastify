@@ -8,7 +8,8 @@ fastify.register(require('fastify-mongodb'), {
   // the default value is false
   forceClose: true,
   
-  url: 'mongodb://localhost:27017/superheroes'
+  // url: 'mongodb://localhost:27017/superheroes'
+  url: 'mongodb://localhost:27017/bdd-test'
 
 })
 
@@ -97,6 +98,67 @@ fastify.patch('/heroes/:id', async (request, reply) => {
   )
   return res
 })
+
+// CRUD user
+
+// post user
+fastify.post('/users', async (request, reply) => {
+  // request toutes les infos dans le requete
+  const col = fastify.mongo.db.collection('users')
+  const res =  await col.insertOne(request.body)
+  return res.ops[0]
+})
+
+// get users
+fastify.get('/users', async (request, reply) => {
+  const col = fastify.mongo.db.collection('users')
+  const res = await col.find({}).toArray()
+    return res
+})
+
+// get user by id
+fastify.get('/users/:id', async (request, reply) => {
+  const col = fastify.mongo.db.collection('users')
+  // si collection n'existe pas ca va aussi la creer
+  const { id }= request.params
+  const res = await col.findOne({
+    _id: new ObjectId(id)
+  })
+  return res
+})
+
+// patch by id
+fastify.patch('/users/:id', async (request, reply) => {
+  const col = fastify.mongo.db.collection('users')
+  const { id } = request.params
+  const res = await col.findOneAndUpdate(
+    { _id: new ObjectId(id) }, 
+    { $set: request.body },
+    { returnDocument: 'after'}
+  )
+  return res
+})
+
+// del by id
+fastify.delete('/users/:id', async (request, reply) => {
+  const col = fastify.mongo.db.collection('users')
+  const { id } = request.params
+  const res =  await col.findOneAndDelete({
+    _id: new ObjectId(id)
+  })
+  return res
+})
+
+
+
+
+
+
+
+
+
+
+
 
 // Run the server!
 const start = async () => {

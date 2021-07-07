@@ -45,3 +45,30 @@ Content-Type: application/json
 {
   "biography.full-name": "Bruce Wayne" 
 }
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+        "email": "h@g.fr",
+        "pwd": "40",
+        "role": "admin"
+}
+
+###
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/60e5ae52fb3d412260e09eb8
+
+###
+PATCH http://localhost:3000/users/60e5ae52fb3d412260e09eb8
+Content-Type: application/json
+
+{
+  "pwd": "123456" 
+}
+
+###
+DELETE http://localhost:3000/users/60e5ae52fb3d412260e09eb8
