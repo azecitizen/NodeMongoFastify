@@ -4,6 +4,12 @@ GET http://localhost:3000/me
 GET http://localhost:3000/heroes
 
 ###
+GET http://localhost:3000/heroes/60e55cd3dfeaf4010cce9bb7
+
+###
+GET http://localhost:3000/heroes/bio/60e55cd3dfeaf4010cce9bb7
+
+###
 POST http://localhost:3000/heroes
 Content-Type: application/json
 
@@ -28,3 +34,6 @@ Content-Type: application/json
         "alignment": "good"
       }
 }
+
+###
+DELETE  http://localhost:3000/heroes/60e55cd3dfeaf4010cce9bb7
