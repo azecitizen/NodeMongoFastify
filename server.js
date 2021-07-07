@@ -87,6 +87,17 @@ fastify.delete('/heroes/:heroesId', async (request, reply) => {
   return result
 })
 
+fastify.patch('/heroes/:id', async (request, reply) => {
+  const col = fastify.mongo.db.collection('heroes')
+  const { id } = request.params
+  const res = await col.findOneAndUpdate(
+    { _id: new ObjectId(id) }, 
+    { $set: request.body },
+    { returnDocument: 'after'}
+  )
+  return res
+})
+
 // Run the server!
 const start = async () => {
   try {

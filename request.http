@@ -36,4 +36,12 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:3000/heroes/60e55cd3dfeaf4010cce9bb7
+DELETE  http://localhost:3000/heroes/60e5a101c3beb7474c0404c1
+
+###
+PATCH  http://localhost:3000/heroes/60e4595eec0b6e5300db88e5
+Content-Type: application/json
+
+{
+  "biography.full-name": "Bruce Wayne" 
+}
