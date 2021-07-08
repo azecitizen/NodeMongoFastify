@@ -14,8 +14,10 @@
   "dependencies": {
     "argon2": "^0.28.2",
     "fastify": "^3.18.1",
+    "fastify-jwt": "^3.0.0",
     "fastify-mongodb": "^2.0.1",
-    "mongodb": "^3.6.9"
+    "fastify-plugin": "^3.0.0",
+    "http-errors": "^1.8.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.9"

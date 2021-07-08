@@ -51,8 +51,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-        "email": "h@g.fr",
-        "pwd": "40",
+        "email": "r2@g.fr",
+        "pwd": "12",
         "role": "admin"
 }
 
@@ -72,3 +72,16 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/users/60e5ae52fb3d412260e09eb8
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+        "email": "r@g.fr",
+        "pwd": "123456"
+}
+
+###
+GET http://localhost:3000/protected
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTZkMTU4NjdhZGI1M2NkY2JhY2FhYSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjI1NzUzOTQyfQ.bSuxO2z_-ZDXtFZ4bgvqucrkNqDML2e81rxrXXnxzKo
