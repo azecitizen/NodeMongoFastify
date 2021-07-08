@@ -1,6 +1,7 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')({ logger: true })
 const { ObjectId } = require('mongodb')
+const argon2 = require('argon2')
 
 // cnx bdd
 fastify.register(require('fastify-mongodb'), {
@@ -105,9 +106,21 @@ fastify.patch('/heroes/:id', async (request, reply) => {
 fastify.post('/users', async (request, reply) => {
   // request toutes les infos dans le requete
   const col = fastify.mongo.db.collection('users')
-  const res =  await col.insertOne(request.body)
-  return res.ops[0]
+  const { pwd } = request.body
+  try {
+    const hash = await argon2.hash(pwd)
+    const newUser = {
+      email: request.body.email,
+      pwd: hash, 
+      role: request.body.role
+    }
+    const res =  await col.insertOne(newUser)
+    reply.code(201).send(res.ops[0])
+  } catch (err){
+    console.error(err)
+  }
 })
+
 
 // get users
 fastify.get('/users', async (request, reply) => {
