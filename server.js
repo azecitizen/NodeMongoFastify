@@ -137,6 +137,7 @@ fastify.patch('/users/:id', async (request, reply) => {
     { returnDocument: 'after'}
   )
   return res
+  // ou reply.code(200).send(result)
 })
 
 // del by id
