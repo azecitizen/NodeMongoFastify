@@ -1,5 +1,8 @@
 async function routes(fastify, options) {
 // CRUD user
+const argon2 = require('argon2')
+const { ObjectId } = require('mongodb')
+const createError = require('http-errors')
 
 // post user
 fastify.post('/users', async (request, reply) => {

@@ -1,8 +1,6 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')({ logger: true })
-const { ObjectId } = require('mongodb')
-const argon2 = require('argon2')
-const createError = require('http-errors')
+
 // const jwt = require('fastify-jwt');
 
 fastify.register(require('fastify-jwt'), {
@@ -43,11 +41,4 @@ const start = async () => {
 }
 start()
 
-const student = 'Siham'
-
-const data = {
-    // cle: valeur
-    // student // equivaut a ecrire student: student
-    student
-}
   

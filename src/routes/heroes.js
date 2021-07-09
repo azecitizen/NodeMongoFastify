@@ -1,4 +1,5 @@
 async function routes(fastify, options) {
+const { ObjectId } = require('mongodb')
 const avengers = ['Batman', 'Wolverine', 'Flash']
 
 // get, obtient heroes
