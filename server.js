@@ -23,7 +23,7 @@ fastify.get('/', async (request, reply) => {
 
 fastify.get('/me', function() {
     return { 
-        prenom: 'Hugo',
+        prenom: 'Hugo aka sidi',
         nom: 'R',
         taf: 'pro'
     }
