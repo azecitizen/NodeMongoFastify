@@ -15,6 +15,8 @@ fastify.register(require('./src/routes/heroes'))
 // importation des routes users
 fastify.register(require('./src/routes/users'))
 
+fastify.register(require('./src/routes/auth'))
+
 // Declare a route
 fastify.get('/', async (request, reply) => {
     // ici on retourne un obj js qui va etre converti en json (JS object notation)
